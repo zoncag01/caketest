@@ -1,0 +1,17 @@
+	<div class="events">
+	<h2>Please Log In</h2>
+	<form action="<?php echo $form->url('/user/login')?>" method="post">
+
+		<p><label for="email_address">Email Address:</label> 
+		<?php echo $form->text('User.email', array('size' => '40','maxlength'=>'255')) ?></p>
+		<?php echo $form->error('User.email', 'Username is required') ?>
+
+		<p><label for="password_field">Password:</label> 
+		<?php echo $form->password('User.password', array('size' => '20', 'maxlength'=>'255')) ?> </p>
+		<?php echo $form->error('User.password', 'Password is required') ?> 
+
+		<p><label for="login_button">&nbsp;</label>
+		<?php echo $form->submit('Login') ?> </p>
+	</form>
+	</div>
+	

@@ -1,0 +1,19 @@
+<h2>Edit User</h2>
+<form action="<?php echo $html->url('/users/edit/'.$html->tagValue('Users/id')); ?>" method="post" enctype="multipart/form-data">
+	<fieldset>
+		<ul>
+			<li>
+				<?php echo $form->labelTag('User/email', 'Email:');?>
+				<?php echo $html->input('User/email', array('size' => '60'));?>
+				<?php echo $html->tagErrorMsg('User/email', 'Please enter a valid email');?>
+			</li>
+			<li>
+				<?php echo $form->labelTag('User/password', 'Password:');?>
+				<?php echo $html->passwordTag('User/password', array('size' => '60'));?>
+				<?php echo $html->tagErrorMsg('User/password', 'Please enter a password.');?>
+			</li>
+		</ul>
+	</fieldset>
+	<?php echo $html->hidden('Users/id')?>
+<p><input type="submit" name="edit" value="Edit User" onclick="this.value='Please wait...';" /> &nbsp;&nbsp; <input type="button" name="cancel" value="Cancel" onclick="this.value='Cancelling...'; window.location.href='<?php e($html->url('/users/')); ?>'" /></p>
+</form>

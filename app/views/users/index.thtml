@@ -1,0 +1,43 @@
+<div class="users">
+<h2>List Users</h2>
+<table>
+	<tr>
+		<th class="title">Email</th>
+		<th>Last Login</th>
+	</tr>
+	<?php $num = 0 ?>
+	<?php foreach ($users as $user): ?>
+	
+		<?php 
+			if($num % 2 == 0): 
+				$class = ""; 
+			else: 
+				$class = "alt";
+			endif;
+		?>
+		
+		<tr class="<?php e($class); ?>">
+			<td><?php e($user['User']['email']); ?></td>
+			<td>
+				<?php
+					if ($user['User']['last_login'] == '0000-00-00 00:00:00'):
+						e("<em>Never</em>");
+					else:
+						e(date('F d, Y @ g:i a', strtotime($user['User']['last_login']))); 
+					endif;
+				?>
+			</td>
+
+			<td>
+				<?php e($html->link('Edit User', '/users/edit/'. $user['User']['id'] , array('class'=>'edit', 'title'=>'Edit user'))); ?>
+				<?php e($html->link('Delete User', '/users/delete/'. $user['User']['id'] , array('class'=>'delete', 'title'=>'Delete user'), 'Are you sure you want to delete the user ' . $user['User']['email'])); ?>
+			</td>
+		</tr>
+		
+		<?php $num ++; ?>
+	<?php endforeach; ?>
+</table>
+	<ul class="actions">
+		<li><?php echo $html->link('New User', '/users/add'); ?></li>
+	</ul>
+</div>

@@ -1,0 +1,14 @@
+<h2>Create A New User</h2>
+
+<?php echo $form->formTag('/users/add') ?>  
+	
+	<p><label>Email Address:</label> 
+	<?php echo $form->text('User.email', array('size' => '40','maxlength'=>'255')) ?></p>
+	<?php echo $form->tagErrorMsg('User.email', $username_error) ?>
+	
+	<p><label>Password:</label> 
+	<?php echo $form->passwordTag('User.password', array('size' => '40')) ?></p>
+	<?php echo $form->tagErrorMsg('User.password', 'Password is required') ?> 
+
+	<?php echo $form->submitTag('Register') ?> 
+</form>
